@@ -1,0 +1,9 @@
+language: ruby
+script: "bundle exec rake spec"
+rvm:
+  - 1.9.3
+  - 2.0.0
+gemfile:
+  - Gemfile
+notifications:
+  email: false
