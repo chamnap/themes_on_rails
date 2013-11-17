@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = ThemesOnRails::VERSION
   s.authors     = ["Chamnap Chhorn"]
   s.email       = ["chamnapchhorn@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/chamnap/themes_on_rails"
   s.summary     = "Adds multi themes support to your Rails application"
   s.description = "Adds multi themes support to your Rails application"
 
