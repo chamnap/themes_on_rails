@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Chamnap Chhorn"]
   s.email       = ["chamnapchhorn@gmail.com"]
   s.homepage    = "https://github.com/chamnap/themes_on_rails"
-  s.summary     = "Adds multi themes support to your Rails application"
-  s.description = "Adds multi themes support to your Rails application"
+  s.summary     = "Adds multi themes support to your Rails 3/4 application"
+  s.description = "Adds multi themes support to your Rails 3/4 application"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
