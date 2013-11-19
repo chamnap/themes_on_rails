@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.1"
+  s.add_development_dependency "ammeter", "~> 0.2.9"
 end
