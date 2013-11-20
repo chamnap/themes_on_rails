@@ -13,6 +13,9 @@ Gem::Specification.new do |s|
   s.summary     = "Adds multi themes support to your Rails 3/4 application"
   s.description = "Adds multi themes support to your Rails 3/4 application"
 
+  s.required_ruby_version     = '>= 1.9.3'
+  s.required_rubygems_version = '>= 1.8.11'
+
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
