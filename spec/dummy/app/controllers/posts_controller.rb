@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
   layout :theme_resolver
   theme :theme_resolver
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+  if Rails::VERSION::MAJOR == 4
+    before_action :set_post, only: [:show, :edit, :update, :destroy]
+  else
+    before_filter :set_post, only: [:show, :edit, :update, :destroy]
+  end
 
   # GET /posts
   def index

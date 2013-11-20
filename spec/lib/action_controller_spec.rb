@@ -39,11 +39,14 @@ describe ThemesOnRails::ActionController, "#initialize" do
 end
 
 describe ThemesOnRails::ActionController, "other methods" do
-  let(:controller)        { controller_class.new }
-  let(:controller_class)  { Class.new }
+  let(:controller)           { controller_class.new }
+  let(:controller_class)     { Class.new }
+  let(:before_filter_method) { Rails::VERSION::MAJOR == 4 ? :before_action : :before_filter }
   before do
     controller_class.stub(:before_action)
     controller_class.stub(:prepend_before_action)
+    controller_class.stub(:before_filter)
+    controller_class.stub(:prepend_before_filter)
   end
 
   it "#theme_view_path" do
@@ -60,19 +63,19 @@ describe ThemesOnRails::ActionController, "other methods" do
   end
 
   it ".add_before_filter without options" do
-    controller_class.should_receive(:before_action).with({})
+    controller_class.should_receive(before_filter_method).with({})
 
-    ThemesOnRails::ActionController.add_before_filter(controller_class, :before_action)
+    ThemesOnRails::ActionController.add_before_filter(controller_class, 'basic_blue')
   end
 
   it ".add_before_filter with :prepend options" do
-    controller_class.should_receive(:prepend_before_action).with({})
+    controller_class.should_receive(:"prepend_#{before_filter_method}").with({})
 
     ThemesOnRails::ActionController.add_before_filter(controller_class, 'basic_blue', prepend: true)
   end
 
   it ".add_before_filter with invalid options" do
-    controller_class.should_receive(:before_action).with({})
+    controller_class.should_receive(before_filter_method).with({})
 
     ThemesOnRails::ActionController.add_before_filter(controller_class, 'basic_blue', invalid: true)
   end

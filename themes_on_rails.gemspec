@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/chamnap/themes_on_rails"
   s.summary     = "Adds multi themes support to your Rails 3/4 application"
   s.description = "Adds multi themes support to your Rails 3/4 application"
+  s.license     = "MIT"
 
   s.required_ruby_version     = '>= 1.9.3'
   s.required_rubygems_version = '>= 1.8.11'
@@ -19,6 +20,6 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 4.0.1"
+  s.add_dependency "rails", ">= 3.2"
   s.add_development_dependency "ammeter", "~> 0.2.9"
 end

@@ -1,5 +1,6 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
+gem 'rails', '~> 3.2.15'
 gem "rake", "~> 10.1.0"
 gem "thin", "~> 1.6.1"
 gem "jquery-rails", "~> 3.0.4"
@@ -9,4 +10,4 @@ gem "pry", "~> 0.9.12.3"
 gem "haml-rails", "~> 0.4"
 gem "rspec-rails", "~> 2.14.0"
 
-gemspec
+gemspec :path => '../'

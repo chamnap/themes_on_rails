@@ -14,15 +14,22 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 
-task :default => "spec"
-require 'rake/testtask'
+task :default => "spec:all"
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = false
+namespace :spec do
+  %w(rails_40 rails_32).each do |gemfile|
+    desc "Run Tests against #{gemfile}"
+    task gemfile do
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
+    end
+  end
+
+  desc "Run Tests against rails versions"
+  task :all do
+    %w(rails_40 rails_32).each do |gemfile|
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
+    end
+  end
 end
-
-
-task :default => :test
