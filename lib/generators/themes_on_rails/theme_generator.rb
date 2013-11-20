@@ -11,6 +11,7 @@ module ThemesOnRails
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
         empty_directory theme_stylesheets_directory
+        create_file     "#{theme_images_directory}/.gitkeep", nil
       end
 
       def copy_manifest_files

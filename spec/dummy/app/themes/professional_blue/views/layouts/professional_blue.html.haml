@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Professional blue
+    = stylesheet_link_tag    "professional_blue/all", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "professional_blue/all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    = yield

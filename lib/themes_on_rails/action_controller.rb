@@ -3,10 +3,10 @@ module ThemesOnRails
     attr_reader :theme_name
 
     class << self
-      def add_before_filter(controller_class, theme_name, options={})
+      def add_before_filter(controller_class, theme, options={})
         filter_method = before_filter_method(options)
         controller_class.send(filter_method, options.slice(:only, :except, :if, :unless)) do |controller|
-          controller.class.theme_controller_class.new(controller, options.except(:only, :except, :if, :unless)).send(:set_theme)
+          controller.class.theme_controller_class.new(controller, theme, options.except(:only, :except, :if, :unless)).send(:set_theme)
         end
       end
 
@@ -46,7 +46,7 @@ module ThemesOnRails
         case theme
         when String     then theme
         when Proc       then theme.call(@controller).to_s
-        when Symbol     then @controller.respond_to?(theme) ? @controller.send(theme).to_s : theme.to_s
+        when Symbol     then @controller.respond_to?(theme, true) ? @controller.send(theme).to_s : theme.to_s
         else
           raise ArgumentError,
             "String, Proc, or Symbol, expected for `theme'; you passed #{theme.inspect}"

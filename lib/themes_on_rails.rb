@@ -6,4 +6,4 @@ module ThemesOnRails
   autoload :ControllerAdditions, "themes_on_rails/controller_additions"
 end
 
-require "themes_on_rails/railtie"
+require "themes_on_rails/railtie" if defined?(Rails)
