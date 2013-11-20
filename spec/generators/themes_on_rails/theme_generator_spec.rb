@@ -28,7 +28,15 @@ describe ThemesOnRails::Generators::ThemeGenerator do
     expect(file("app/themes/basic_blue/assets/javascripts/basic_blue")).to exist
   end
 
+  it "exists `app/themes/basic_blue/assets/javascripts/basic_blue/all.js`" do
+    expect(file("app/themes/basic_blue/assets/javascripts/basic_blue/all.js")).to exist
+  end
+
   it "exists `app/themes/basic_blue/assets/stylesheets/basic_blue`" do
     expect(file("app/themes/basic_blue/assets/stylesheets/basic_blue")).to exist
+  end
+
+  it "exists `app/themes/basic_blue/assets/stylesheets/basic_blue/all.css`" do
+    expect(file("app/themes/basic_blue/assets/stylesheets/basic_blue/all.css")).to exist
   end
 end
