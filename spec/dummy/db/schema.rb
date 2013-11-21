@@ -9,11 +9,11 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended that you check this file into your version control system.
+# It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120082307) do
+ActiveRecord::Schema.define(:version => 20131120082307) do
 
-  create_table "posts", force: true do |t|
+  create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"

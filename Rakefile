@@ -17,8 +17,10 @@ task :default => "spec:all"
 namespace :spec do
   %w(rails_40 rails_32).each do |gemfile|
     desc "Run Tests against #{gemfile}"
-    task gemfile => "db:test:prepare" do
+    task gemfile do
       ENV["RAILS_ENV"] = "test"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' rake db:test:prepare"
+      sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' rake db:migrate"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
     end
