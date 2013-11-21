@@ -26,7 +26,7 @@ To generate theme inside your app:
     $ rails g themes_on_rails:theme theme_name
 
 <pre>
-$[Rails.root]
+app/
   themes/
     [theme_name]/
       assets/
@@ -46,9 +46,9 @@ $[Rails.root]
 It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
 
 ```ruby
-image_tag           "basic/logo.png"        # => app/themes/basic/assets/images/basic/logo.png
-javascript_link_tag "professional_blue/all" # => app/themes/basic/assets/javascripts/basic/all.js
-stylesheet_link_tag "professional_blue/all" # => app/themes/basic/assets/stylesheets/basic/all.css
+image_tag           "professional_blue/logo.png" # => app/themes/basic/assets/images/professional_blue/logo.png
+javascript_link_tag "professional_blue/all"      # => app/themes/basic/assets/javascripts/professional_blue/all.js
+stylesheet_link_tag "professional_blue/all"      # => app/themes/basic/assets/stylesheets/professional_blue/all.css
 ```
 
 ### Controller
@@ -98,7 +98,7 @@ end
 Theme specified at the controller level support the `:only` and `:except` options. These options take either a method name, or an array of method names, corresponding to method names within the controller:
 
 ```ruby
-class ProductsController < ApplicationController
+class HomeController < ApplicationController
   theme "basic", except: [:rss]
 end
 ```
