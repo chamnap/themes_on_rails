@@ -9,22 +9,24 @@ end
 Bundler::GemHelper.install_tasks
 
 # dummy app tasks
-load File.expand_path("spec/dummy/Rakefile")
-ENV["RAILS_ENV"] ||= "test"
+require 'rake'
+load File.expand_path('spec/dummy/Rakefile')
 
 task :default => "spec:all"
 
 namespace :spec do
   %w(rails_40 rails_32).each do |gemfile|
     desc "Run Tests against #{gemfile}"
-    task gemfile do
+    task gemfile => "db:test:prepare" do
+      ENV["RAILS_ENV"] = "test"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
     end
   end
 
   desc "Run Tests against rails versions"
-  task :all do
+  task :all => "db:test:prepare" do
+    ENV["RAILS_ENV"] = "test"
     %w(rails_40 rails_32).each do |gemfile|
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle --quiet"
       sh "BUNDLE_GEMFILE='gemfiles/#{gemfile}.gemfile' bundle exec rake spec"
