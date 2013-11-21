@@ -34,11 +34,22 @@ $[Rails.root]
           [theme_name]/
         stylesheets/
           [theme_name]/
+            all.css
         javascripts/
           [theme_name]/
+            all.js
       views/
         layouts/
+          [theme_name].html.erb
 </pre>
+
+It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
+
+```ruby
+image_tag           "basic/logo.png"        # => app/themes/basic/assets/images/basic/logo.png
+javascript_link_tag "professional_blue/all" # => app/themes/basic/assets/javascripts/basic/all.js
+stylesheet_link_tag "professional_blue/all" # => app/themes/basic/assets/stylesheets/basic/all.css
+```
 
 ### Controller
 
@@ -60,12 +71,12 @@ You can use a symbol to defer the choice of theme until a request is processed:
 
 ```ruby
 class HomeController < ApplicationController
-  theme :theme_resolver
- 
-  def index
+  theme :theme_resolver
+
+  def index
     ...
   end
- 
+
   private
 
     def theme_resolver
