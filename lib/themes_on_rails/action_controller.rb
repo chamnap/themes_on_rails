@@ -3,10 +3,20 @@ module ThemesOnRails
     attr_reader :theme_name
 
     class << self
-      def add_before_filter(controller_class, theme, options={})
+      def apply_theme(controller_class, theme, options={})
         filter_method = before_filter_method(options)
-        controller_class.send(filter_method, options.slice(:only, :except, :if, :unless)) do |controller|
-          controller.class.theme_controller_class.new(controller, theme, options.except(:only, :except, :if, :unless)).send(:set_theme)
+        options       = options.slice(:only, :except)
+
+        controller_class.send(filter_method, options) do |controller|
+
+          # initialize
+          instance = ThemesOnRails::ActionController.new(controller, theme)
+
+          # set layout
+          controller_class.layout(instance.theme_name, options)
+
+          # prepend view path
+          controller.prepend_view_path instance.theme_view_path
         end
       end
 
@@ -22,14 +32,9 @@ module ThemesOnRails
         end
     end
 
-    def initialize(controller, theme, options={})
+    def initialize(controller, theme)
       @controller = controller
       @theme_name = _theme_name(theme)
-      @options    = options
-    end
-
-    def set_theme
-      @controller.prepend_view_path theme_view_path
     end
 
     def theme_view_path
@@ -37,7 +42,7 @@ module ThemesOnRails
     end
 
     def prefix_path
-      "app/themes"
+      "#{Rails.root}/app/themes"
     end
 
     private

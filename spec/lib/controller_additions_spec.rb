@@ -8,19 +8,15 @@ describe ThemesOnRails::ControllerAdditions do
     controller_class.send(:include, ThemesOnRails::ControllerAdditions)
   end
 
-  it "invokes #add_before_filter without options" do
-    controller_class.theme_controller_class.should_receive(:add_before_filter).with(controller_class, "basic_blue", {})
+  it "invokes #apply_theme without options" do
+    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, "basic_blue", {})
 
     controller_class.theme "basic_blue"
   end
 
-  it "invokes #add_before_filter with options" do
-    controller_class.theme_controller_class.should_receive(:add_before_filter).with(controller_class, :theme_resolver, { only: [:show] })
+  it "invokes #apply_theme with options" do
+    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, :theme_resolver, { only: [:show] })
 
     controller_class.theme :theme_resolver, only: [:show]
-  end
-
-  it "#theme_controller_class" do
-    expect(controller_class.theme_controller_class).to eq(ThemesOnRails::ActionController)
   end
 end

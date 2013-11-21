@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  layout :theme_resolver
-  theme :theme_resolver
+  theme :theme_resolver, except: [:new]
 
   if Rails::VERSION::MAJOR == 4
     before_action :set_post, only: [:show, :edit, :update, :destroy]
