@@ -75,13 +75,13 @@ class HomeController < ApplicationController
 
   def index
     ...
-  end
+  end
 
-  private
+  private
 
-    def theme_resolver
-      params[:theme].presence || "professional"
-    end
+    def theme_resolver
+      params[:theme].presence || "professional"
+    end
 end
 ```
 
