@@ -1,4 +1,4 @@
-# ThemesOnRails [![Build Status](https://travis-ci.org/chamnap/themes_on_rails.png?branch=master)](https://travis-ci.org/chamnap/themes_on_rails)
+# ThemesOnRails [![Build Status](https://travis-ci.org/yoolk/themes_on_rails.png?branch=master)](https://travis-ci.org/yoolk/themes_on_rails)
 
 ## Installation
 
