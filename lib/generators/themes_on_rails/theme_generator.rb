@@ -6,7 +6,6 @@ module ThemesOnRails
       desc        "Creates a new theme"
 
      def create_theme_directory
-        empty_directory theme_directory
         empty_directory theme_views_layout
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
