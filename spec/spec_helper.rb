@@ -1,4 +1,6 @@
 require 'coveralls'
+require 'simplecov'
+SimpleCov.add_filter 'spec'
 Coveralls.wear!
 
 # Configure Rails Environment
