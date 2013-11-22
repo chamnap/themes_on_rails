@@ -3,6 +3,7 @@ log/*.log
 pkg/
 Gemfile.lock
 gemfiles/*.lock
+coverage/
 spec/dummy/db/*.sqlite3
 spec/dummy/log/*.log
 spec/dummy/tmp/
