@@ -1,4 +1,4 @@
-# ThemesOnRails [![Build Status](https://travis-ci.org/yoolk/themes_on_rails.png?branch=master)](https://travis-ci.org/yoolk/themes_on_rails) [![Dependency Status](https://gemnasium.com/yoolk/themes_on_rails.png)](https://gemnasium.com/yoolk/themes_on_rails)
+# ThemesOnRails [![Build Status](https://travis-ci.org/yoolk/themes_on_rails.png?branch=master)](https://travis-ci.org/yoolk/themes_on_rails) [![Dependency Status](https://gemnasium.com/yoolk/themes_on_rails.png)](https://gemnasium.com/yoolk/themes_on_rails) [![Code Climate](https://codeclimate.com/github/yoolk/themes_on_rails.png)](https://codeclimate.com/github/yoolk/themes_on_rails)
 
 ## Installation
 
