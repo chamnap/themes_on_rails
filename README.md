@@ -46,9 +46,9 @@ app/
 It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
 
 ```ruby
-image_tag           "professional_blue/logo.png" # => app/themes/basic/assets/images/professional_blue/logo.png
-javascript_link_tag "professional_blue/all"      # => app/themes/basic/assets/javascripts/professional_blue/all.js
-stylesheet_link_tag "professional_blue/all"      # => app/themes/basic/assets/stylesheets/professional_blue/all.css
+image_tag           "professional_blue/logo.png" # => app/themes/professional_blue/assets/images/professional_blue/logo.png
+javascript_link_tag "professional_blue/all"      # => app/themes/professional_blue/assets/javascripts/professional_blue/all.js
+stylesheet_link_tag "professional_blue/all"      # => app/themes/professional_blue/assets/stylesheets/professional_blue/all.css
 ```
 
 ### Controller
