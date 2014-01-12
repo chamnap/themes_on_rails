@@ -12,9 +12,6 @@ module ThemesOnRails
           # initialize
           instance = ThemesOnRails::ActionController.new(controller, theme)
 
-          # set layout
-          controller_class.layout(instance.theme_name, options)
-
           # prepend view path
           controller.prepend_view_path instance.theme_view_path
         end
