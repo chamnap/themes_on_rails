@@ -6,7 +6,7 @@ The simplest way to install is to use Bundler.
 
 Add this gem to your Gemfile:
 
-    gem "themes_on_rails", github: "yoolk/themes_on_rails"
+    gem "themes_on_rails"
 
 Then, use Bundler to install the gem and its dependencies:
 
