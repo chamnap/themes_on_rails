@@ -43,6 +43,8 @@ app/
           [theme_name].html.erb
 </pre>
 
+After you invoke the above command, make sure you restart your rails process.
+
 It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
 
 ```ruby
