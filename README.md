@@ -53,6 +53,8 @@ javascript_link_tag "professional_blue/all"      # => app/themes/professional_bl
 stylesheet_link_tag "professional_blue/all"      # => app/themes/professional_blue/assets/stylesheets/professional_blue/all.css
 ```
 
+There is an example app at https://github.com/chamnap/themes_on_rails_example.
+
 ### Controller
 
 You can set theme in your controllers by using the `theme` declaration. For example:
