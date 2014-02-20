@@ -111,7 +111,7 @@ With this declaration, the **basic** theme would be used for everything but the 
 
 ## Asset Pipeline
 
-Add this to your staging.rb or production.rb
+If you are using version `0.1.0`, add this to your staging.rb or production.rb:
 
 ```ruby
 config.assets.precompile += [ Proc.new { |path, fn| fn =~ /app\/themes/ && !%w(.js .css).include?(File.extname(path)) } ]
