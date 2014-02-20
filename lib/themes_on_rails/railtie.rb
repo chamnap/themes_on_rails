@@ -13,5 +13,13 @@ module ThemesOnRails
       end
     end
 
+    if Rails.env.production? || Rails.env.beta? || Rails.env.staging?
+      initializer "themes_on_rails.precompile" do |app|
+        config.assets.precompile += [ Proc.new { |path, fn| fn =~ /app\/themes/ && !%w(.js .css).include?(File.extname(path)) } ]
+        config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.js" }
+        config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.css" }
+      end
+    end
+
   end
 end
