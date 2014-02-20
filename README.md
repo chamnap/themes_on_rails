@@ -109,6 +109,15 @@ end
 
 With this declaration, the **basic** theme would be used for everything but the `rss` index methods.
 
+## Asset Pipeline
+
+Add this to your staging.rb or production.rb
+
+```ruby
+config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.css" }
+config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.css" }
+```
+
 ## Authors
 
 * [Chamnap Chhorn](https://github.com/chamnap)
