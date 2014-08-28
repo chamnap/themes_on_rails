@@ -63,6 +63,6 @@ class PostsController < ApplicationController
     end
 
     def theme_resolver
-      params[:theme].presence || "basic_blue"
+      params[:theme].presence || "theme_a"
     end
 end

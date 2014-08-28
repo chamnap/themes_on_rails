@@ -48,9 +48,9 @@ After you invoke the above command, make sure you restart your rails process.
 It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
 
 ```ruby
-image_tag              "professional_blue/logo.png" # => app/themes/professional_blue/assets/images/professional_blue/logo.png
-javascript_include_tag "professional_blue/all"      # => app/themes/professional_blue/assets/javascripts/professional_blue/all.js
-stylesheet_link_tag    "professional_blue/all"      # => app/themes/professional_blue/assets/stylesheets/professional_blue/all.css
+image_tag              "theme_a/logo.png" # => app/themes/theme_a/assets/images/theme_a/logo.png
+javascript_include_tag "theme_a/all"      # => app/themes/theme_a/assets/javascripts/theme_a/all.js
+stylesheet_link_tag    "theme_a/all"      # => app/themes/theme_a/assets/stylesheets/theme_a/all.css
 ```
 
 There is an example app at https://github.com/chamnap/themes_on_rails_example.

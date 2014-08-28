@@ -1,7 +1,9 @@
-require 'coveralls'
-require 'simplecov'
-SimpleCov.add_filter 'spec'
-Coveralls.wear!
+if ENV['COVERAGE'] || ENV['CI']
+  require 'coveralls'
+  require 'simplecov'
+  SimpleCov.add_filter 'spec'
+  Coveralls.wear!
+end
 
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"

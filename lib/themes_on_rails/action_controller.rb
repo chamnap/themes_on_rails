@@ -17,6 +17,9 @@ module ThemesOnRails
 
           # prepend view path
           controller.prepend_view_path instance.theme_view_path
+
+          # liquid file system
+          Liquid::Template.file_system = Liquid::Rails::FileSystem.new(instance.theme_view_path) if defined?(Liquid::Rails)
         end
       end
 

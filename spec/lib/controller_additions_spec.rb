@@ -9,9 +9,9 @@ describe ThemesOnRails::ControllerAdditions do
   end
 
   it "invokes #apply_theme without options" do
-    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, "basic_blue", {})
+    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, "theme_a", {})
 
-    controller_class.theme "basic_blue"
+    controller_class.theme "theme_a"
   end
 
   it "invokes #apply_theme with options" do
