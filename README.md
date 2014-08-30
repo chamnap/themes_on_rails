@@ -46,6 +46,7 @@ app/
       views/
         layouts/
           [theme_name].html.erb
+      locales/
 </pre>
 
 After you invoke the above command, make sure you restart your rails process.
