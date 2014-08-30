@@ -1,4 +1,5 @@
 require 'themes_on_rails/version'
+require 'themes_on_rails/engine'
 require 'active_support/concern'
 
 module ThemesOnRails
@@ -9,5 +10,3 @@ module ThemesOnRails
     Dir.entries('app/themes').sort[2..-1]
   end
 end
-
-require 'themes_on_rails/railtie' if defined?(Rails)
