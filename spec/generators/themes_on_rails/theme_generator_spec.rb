@@ -20,6 +20,10 @@ describe ThemesOnRails::Generators::ThemeGenerator do
     expect(file("app/themes/theme_a")).to exist
   end
 
+  it "exists `app/themes/theme_a/locales`" do
+    expect(file("app/themes/theme_a/locales")).to exist
+  end
+
   it "exists `app/themes/theme_a/assets/images/theme_a`" do
     expect(file("app/themes/theme_a/assets/images/theme_a")).to exist
   end

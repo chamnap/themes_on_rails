@@ -6,7 +6,11 @@ The simplest way to install is to use Bundler.
 
 Add this gem to your Gemfile:
 
-    gem "themes_on_rails"
+    gem 'themes_on_rails'
+
+If you want to use `themes_on_rails` with `liquid` template, add one more gem to your Gemfile:
+
+    gem 'liquid-rails'
 
 Then, use Bundler to install the gem and its dependencies:
 
@@ -14,10 +18,11 @@ Then, use Bundler to install the gem and its dependencies:
 
 ## Usage
 
-A theme is composed of two things:
+A theme is composed of three things:
 
-  1. Views: templates and layouts (erb, haml, or other template engines)
-  2. Assets: images, javascripts, stylesheets
+  1. Assets: images, javascripts, stylesheets
+  2. Views: templates and layouts (erb, haml, or other template engines)
+  3. Locales: locales files if any
 
 ### Generator
 
@@ -48,9 +53,9 @@ After you invoke the above command, make sure you restart your rails process.
 It's best advisable to namespace your assets directory so that it won't conflict with assets in other themes.
 
 ```ruby
-image_tag              "theme_a/logo.png" # => app/themes/theme_a/assets/images/theme_a/logo.png
-javascript_include_tag "theme_a/all"      # => app/themes/theme_a/assets/javascripts/theme_a/all.js
-stylesheet_link_tag    "theme_a/all"      # => app/themes/theme_a/assets/stylesheets/theme_a/all.css
+image_tag              'theme_a/logo.png' # => app/themes/theme_a/assets/images/theme_a/logo.png
+javascript_include_tag 'theme_a/all'      # => app/themes/theme_a/assets/javascripts/theme_a/all.js
+stylesheet_link_tag    'theme_a/all'      # => app/themes/theme_a/assets/stylesheets/theme_a/all.css
 ```
 
 There is an example app at https://github.com/chamnap/themes_on_rails_example.
@@ -61,7 +66,7 @@ You can set theme in your controllers by using the `theme` declaration. For exam
 
 ```ruby
 class HomeController < ApplicationController
-  theme "basic"
+  theme 'basic'
 
   def index
     ...
@@ -84,7 +89,7 @@ class HomeController < ApplicationController
   private
 
     def theme_resolver
-      params[:theme].presence || "professional"
+      params[:theme].presence || 'professional'
     end
 end
 ```
@@ -95,7 +100,7 @@ You can even use an inline method, such as a **Proc**, to determine the theme. F
 
 ```ruby
 class HomeController < ApplicationController
-  theme Proc.new { |controller| params[:theme].presence || "professional" }
+  theme Proc.new { |controller| params[:theme].presence || 'professional' }
 end
 ```
 
@@ -103,7 +108,7 @@ Theme specified at the controller level support the `:only` and `:except` option
 
 ```ruby
 class HomeController < ApplicationController
-  theme "basic", except: [:rss]
+  theme 'basic', except: [:rss]
 end
 ```
 

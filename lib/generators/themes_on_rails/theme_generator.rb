@@ -10,7 +10,9 @@ module ThemesOnRails
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
         empty_directory theme_stylesheets_directory
+        empty_directory theme_locales_directory
         create_file     "#{theme_images_directory}/.gitkeep", nil
+        create_file     "#{theme_locales_directory}/.gitkeep", nil
       end
 
       def copy_manifest_files
@@ -46,6 +48,10 @@ module ThemesOnRails
 
         def theme_stylesheets_directory
           "#{theme_directory}/assets/stylesheets/#{theme_name}"
+        end
+
+        def theme_locales_directory
+          "#{theme_directory}/locales"
         end
     end
   end
