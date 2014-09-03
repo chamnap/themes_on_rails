@@ -44,17 +44,6 @@ describe ThemesOnRails::Generators::ThemeGenerator do
     expect(file("app/themes/theme_a/assets/stylesheets/theme_a/all.css")).to exist
   end
 
-  context "layout file: haml" do
-    before(:all)  {
-      Rails.configuration.app_generators.rails[:template_engine] = :haml
-    }
-    subject { file("app/themes/theme_a/views/layouts/theme_a.html.haml") }
-
-    it { should exist }
-    it { should contain(/\= stylesheet_link_tag    \"theme_a\/all\"/) }
-    it { should contain(/\= javascript_include_tag \"theme_a\/all\"/) }
-  end
-
   context "layout file: erb" do
     before(:all)  {
       Rails.configuration.app_generators.rails[:template_engine] = :erb
@@ -67,5 +56,31 @@ describe ThemesOnRails::Generators::ThemeGenerator do
     it { should exist }
     it { should contain(/\= stylesheet_link_tag    \"theme_a\/all\"/) }
     it { should contain(/\= javascript_include_tag \"theme_a\/all\"/) }
+  end
+
+  context "layout file: haml" do
+    before(:all)  {
+      Rails.configuration.app_generators.rails[:template_engine] = :haml
+    }
+    subject { file("app/themes/theme_a/views/layouts/theme_a.html.haml") }
+
+    it { should exist }
+    it { should contain(/\= stylesheet_link_tag    \"theme_a\/all\"/) }
+    it { should contain(/\= javascript_include_tag \"theme_a\/all\"/) }
+  end
+
+  context "layout file: liquid" do
+    before(:all)  {
+      Rails.configuration.app_generators.rails[:template_engine] = :liquid
+    }
+    after(:all)  {
+      Rails.configuration.app_generators.rails[:template_engine] = :haml
+    }
+    subject { file("app/themes/theme_a/views/layouts/theme_a.liquid") }
+
+    it { should exist }
+    it { should contain(/\{\{ \'theme_a\/all\' | asset_path | javascript_include_tag \}\}/) }
+    it { should contain(/\{\{ \'theme_a\/all\' | asset_path | stylesheet_link_tag \}\}/) }
+    it { should contain(/\{\{ content_for_layout \}\}/) }
   end
 end

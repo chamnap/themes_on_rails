@@ -21,7 +21,10 @@ module ThemesOnRails
       end
 
       def copy_layout_file
-        if Rails.configuration.app_generators.rails[:template_engine] == :haml
+        template_engine = Rails.configuration.app_generators.rails[:template_engine]
+        if template_engine == :liquid
+          template "layout.html.liquid", "#{theme_views_layout}/#{theme_name}.liquid"
+        elsif template_engine == :haml
           template "layout.html.haml", "#{theme_views_layout}/#{theme_name}.html.haml"
         else
           template "layout.html.erb", "#{theme_views_layout}/#{theme_name}.html.erb"
