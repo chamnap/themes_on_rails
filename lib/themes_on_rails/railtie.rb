@@ -7,6 +7,12 @@ module ThemesOnRails
       end
     end
 
+    initializer "themes_on_rails.action_mailer" do |app|
+      ActiveSupport.on_load :action_mailer do
+        include ThemesOnRails::MailerAdditions
+      end
+    end
+
     initializer "themes_on_rails.assets_path" do |app|
       Dir.glob("#{Rails.root}/app/themes/*/assets/*").each do |dir|
         app.config.assets.paths << dir
