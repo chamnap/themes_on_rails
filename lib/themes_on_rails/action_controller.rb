@@ -9,13 +9,13 @@ module ThemesOnRails
 
         controller_class.send(filter_method, options) do |controller|
 
-          # initialize
-          theme_instance = ThemesOnRails::ActionController.new(controller, theme)
-
           # set layout
           controller_class.layout Proc.new { |controller|
-            theme_instance.theme_name
+            ThemesOnRails::ActionController.new(controller, theme).theme_name
           }, options
+
+          # initialize
+          theme_instance = ThemesOnRails::ActionController.new(controller, theme)
 
           # prepend view path
           controller.prepend_view_path theme_instance.theme_view_path
