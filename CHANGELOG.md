@@ -4,7 +4,7 @@
 
 * Support liquid templates.
 * Support locales in theme directory.
-* Support Raisl 4.2.x.
+* Support Rails 4.2.x.
 * Fix bug switching theme in development, #7.
 
 ## 0.2.2
