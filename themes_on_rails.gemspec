@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "rails", ">= 3.2"
-  s.add_development_dependency "ammeter", "~> 0.2.9"
+  s.add_development_dependency "ammeter", "~> 1.1.2"
 end
