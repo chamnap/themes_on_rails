@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title Theme B
+    = stylesheet_link_tag    "theme_b/all", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "theme_b/all", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    = yield

@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem "rails", "~> 4.0.4"
+gem 'liquid-rails', '~> 0.1.0'
 gem "rake", "~> 10.1.0"
 gem "thin", "~> 1.6.1"
 gem "jquery-rails", "~> 3.0.4"
@@ -9,5 +11,6 @@ gem "pry", "~> 0.9.12.3"
 gem "haml-rails", "~> 0.4"
 gem "rspec-rails", "~> 2.14.0"
 gem 'coveralls', require: false
+gem 'guard-rspec', '~> 4.3.1'
 
 gemspec

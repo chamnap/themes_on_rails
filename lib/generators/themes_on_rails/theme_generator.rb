@@ -10,7 +10,9 @@ module ThemesOnRails
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
         empty_directory theme_stylesheets_directory
+        empty_directory theme_locales_directory
         create_file     "#{theme_images_directory}/.gitkeep", nil
+        create_file     "#{theme_locales_directory}/.gitkeep", nil
       end
 
       def copy_manifest_files
@@ -19,7 +21,10 @@ module ThemesOnRails
       end
 
       def copy_layout_file
-        if Rails.configuration.app_generators.rails[:template_engine] == :haml
+        template_engine = Rails.configuration.app_generators.rails[:template_engine]
+        if template_engine == :liquid
+          template "layout.html.liquid", "#{theme_views_layout}/#{theme_name}.liquid"
+        elsif template_engine == :haml
           template "layout.html.haml", "#{theme_views_layout}/#{theme_name}.html.haml"
         else
           template "layout.html.erb", "#{theme_views_layout}/#{theme_name}.html.erb"
@@ -46,6 +51,10 @@ module ThemesOnRails
 
         def theme_stylesheets_directory
           "#{theme_directory}/assets/stylesheets/#{theme_name}"
+        end
+
+        def theme_locales_directory
+          "#{theme_directory}/locales"
         end
     end
   end

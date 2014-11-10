@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= theme_name.humanize %></title>
+  {{ '<%= "#{theme_name}/all" %>' | asset_path | javascript_include_tag }}
+  {{ '<%= "#{theme_name}/all" %>' | asset_path | stylesheet_link_tag }}
+  {% csrf_meta_tags %}
+</head>
+<body>
+
+{{ content_for_layout }}
+
+</body>
+</html>

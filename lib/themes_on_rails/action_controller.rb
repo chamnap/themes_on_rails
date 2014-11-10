@@ -9,14 +9,19 @@ module ThemesOnRails
 
         controller_class.send(filter_method, options) do |controller|
 
-          # initialize
-          instance = ThemesOnRails::ActionController.new(controller, theme)
-
           # set layout
-          controller_class.layout(instance.theme_name, options)
+          controller_class.layout Proc.new { |controller|
+            ThemesOnRails::ActionController.new(controller, theme).theme_name
+          }, options
+
+          # initialize
+          theme_instance = ThemesOnRails::ActionController.new(controller, theme)
 
           # prepend view path
-          controller.prepend_view_path instance.theme_view_path
+          controller.prepend_view_path theme_instance.theme_view_path
+
+          # liquid file system
+          Liquid::Template.file_system = Liquid::Rails::FileSystem.new(theme_instance.theme_view_path) if defined?(Liquid::Rails)
         end
       end
 

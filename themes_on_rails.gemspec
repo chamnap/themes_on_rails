@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Adds multi themes support to your Rails 3/4 application"
   s.license     = "MIT"
 
-  s.required_ruby_version     = '>= 1.9.3'
+  s.required_ruby_version     = '>= 2.0.0'
   s.required_rubygems_version = '>= 1.8.11'
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "rails", ">= 3.2"
-  s.add_development_dependency "ammeter", "~> 0.2.9"
+  s.add_development_dependency "ammeter", "~> 1.1.2"
 end
