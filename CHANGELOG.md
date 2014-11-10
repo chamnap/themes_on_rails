@@ -3,7 +3,8 @@
 ## 0.3.0
 
 * Support liquid templates.
-# Support locales in theme directory.
+* Support locales in theme directory.
+* Support Raisl 4.2.x.
 * Fix bug switching theme in development, #7.
 
 ## 0.2.2
