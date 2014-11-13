@@ -20,9 +20,18 @@ module ThemesOnRails
     end
 
     initializer 'themes_on_rails.precompile' do |app|
-      app.config.assets.precompile += [ Proc.new { |path, fn| fn =~ /app\/themes/ && !%w(.js .css).include?(File.extname(path)) } ]
-      app.config.assets.precompile += Dir['app/themes/*'].map { |path| "#{path.split('/').last}/all.js" }
-      app.config.assets.precompile += Dir['app/themes/*'].map { |path| "#{path.split('/').last}/all.css" }
+      app.config.assets.precompile << Proc.new do |path, fn|
+        if fn =~ /app\/themes/
+          basename = path.split('/').last
+          if !%w(.js .css).include?(File.extname(path))
+            true
+          elsif basename.in?(['all.js', 'all.css']) || basename.start_with?('all_')
+            true
+          else
+            false
+          end
+        end
+      end
     end
   end
 end
