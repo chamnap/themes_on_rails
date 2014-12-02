@@ -9,7 +9,6 @@ module ThemesOnRails
     end
 
     initializer 'themes_on_rails.load_locales' do |app|
-      app.config.i18n.default_locale = :en
       app.config.i18n.load_path += Dir[Rails.root.join('app/themes/*', 'locales', '**', '*.yml').to_s]
     end
 
