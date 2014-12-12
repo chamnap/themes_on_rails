@@ -7,6 +7,6 @@ module ThemesOnRails
   autoload :ControllerAdditions, 'themes_on_rails/controller_additions'
 
   def self.all
-    Dir.entries('app/themes').sort[2..-1]
+    Dir.entries('app/themes/*').select { |fn| !fn.start_with?('.') && File.directory?(fn) }.sort[2..-1]
   end
 end
