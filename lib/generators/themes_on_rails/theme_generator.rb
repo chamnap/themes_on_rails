@@ -7,6 +7,7 @@ module ThemesOnRails
 
      def create_theme_directory
         empty_directory theme_views_layout
+        empty_directory theme_views_mailers
         empty_directory theme_images_directory
         empty_directory theme_javascripts_directory
         empty_directory theme_stylesheets_directory
@@ -39,6 +40,10 @@ module ThemesOnRails
 
         def theme_views_layout
           "#{theme_directory}/views/layouts"
+        end
+
+        def theme_views_mailers
+          "#{theme_directory}/views/mailers"
         end
 
         def theme_images_directory

@@ -18,6 +18,12 @@ module ThemesOnRails
       end
     end
 
+    initializer "themes_on_rails.action_mailer" do |app|
+      ActiveSupport.on_load :action_mailer do
+        include ThemesOnRails::MailerAdditions
+      end
+    end
+
     initializer 'themes_on_rails.precompile' do |app|
       app.config.assets.precompile << Proc.new do |path, fn|
         if fn =~ /app\/themes/
