@@ -7,12 +7,12 @@ module ThemesOnRails
         filter_method = before_filter_method(options)
         options       = options.slice(:only, :except)
 
-        controller_class.send(filter_method, options) do |controller|
+        # set layout
+        controller_class.layout Proc.new { |controller|
+          ThemesOnRails::ActionController.new(controller, theme).theme_name
+        }, options
 
-          # set layout
-          controller_class.layout Proc.new { |controller|
-            ThemesOnRails::ActionController.new(controller, theme).theme_name
-          }, options
+        controller_class.send(filter_method, options) do |controller|
 
           # initialize
           theme_instance = ThemesOnRails::ActionController.new(controller, theme)
