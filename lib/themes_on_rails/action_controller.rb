@@ -4,6 +4,7 @@ module ThemesOnRails
 
     class << self
       def apply_theme(controller_class, theme, options={})
+        return if _theme_name(theme).blank?
         filter_method = before_filter_method(options)
         options       = options.slice(:only, :except)
 
