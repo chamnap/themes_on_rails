@@ -8,9 +8,9 @@ gem 'jquery-rails', '~> 4.0.3'
 gem 'sqlite3',      '~> 1.3.10'
 gem 'quiet_assets'
 gem 'pry',          '~> 0.10.1'
-gem 'haml-rails',   '~> 0.8.2'
-gem 'rspec-rails',  '~> 3.2.0'
-gem 'guard-rspec',  '~> 4.5.0'
+gem 'haml-rails',   '~> 0.9.0'
+gem 'rspec-rails',  '~> 3.4.0'
+gem 'guard-rspec',  '~> 4.6.4'
 gem 'coveralls',    require: false
 
 gemspec
