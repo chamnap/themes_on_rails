@@ -10,15 +10,18 @@ module ThemesOnRails
         # set layout
         controller_class.class_eval do
           define_method :layout_from_theme do
-            ThemesOnRails::ActionController.new(self, theme).theme_name
+            theme_instance.theme_name
           end
-          private :layout_from_theme
-          layout :layout_from_theme, options
+
+          define_method :theme_instance do
+            @theme_instance ||= ThemesOnRails::ActionController.new(self, theme)
+          end
+
+          private :layout_from_theme, :theme_instance
+          layout  :layout_from_theme, options
         end
 
         controller_class.send(filter_method, options) do |controller|
-          # initialize
-          theme_instance = ThemesOnRails::ActionController.new(controller, theme)
 
           # prepend view path
           controller.prepend_view_path theme_instance.theme_view_path
