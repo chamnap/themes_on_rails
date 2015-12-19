@@ -1,16 +1,16 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "rails", "~> 4.0.4"
-gem 'liquid-rails', '~> 0.1.0'
-gem "rake", "~> 10.1.0"
-gem "thin", "~> 1.6.1"
-gem "jquery-rails", "~> 3.0.4"
-gem "sqlite3", "~> 1.3.8"
-gem "quiet_assets"
-gem "pry", "~> 0.9.12.3"
-gem "haml-rails", "~> 0.4"
-gem "rspec-rails", "~> 2.14.0"
-gem 'coveralls', require: false
-gem 'guard-rspec', '~> 4.3.1'
+gem 'rails',        '~> 4.2.5'
+gem 'liquid-rails', '~> 0.1.3'
+gem 'rake',         '~> 10.4.2'
+gem 'thin',         '~> 1.6.3'
+gem 'jquery-rails', '~> 4.0.3'
+gem 'sqlite3',      '~> 1.3.10'
+gem 'quiet_assets'
+gem 'pry',          '~> 0.10.1'
+gem 'haml-rails',   '~> 0.8.2'
+gem 'rspec-rails',  '~> 3.2.0'
+gem 'guard-rspec',  '~> 4.5.0'
+gem 'coveralls',    require: false
 
 gemspec

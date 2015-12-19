@@ -9,13 +9,13 @@ describe ThemesOnRails::ControllerAdditions do
   end
 
   it "invokes #apply_theme without options" do
-    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, "theme_a", {})
+    expect(ThemesOnRails::ActionController).to receive(:apply_theme).with(controller_class, "theme_a", {})
 
     controller_class.theme "theme_a"
   end
 
   it "invokes #apply_theme with options" do
-    ThemesOnRails::ActionController.should_receive(:apply_theme).with(controller_class, :theme_resolver, { only: [:show] })
+    expect(ThemesOnRails::ActionController).to receive(:apply_theme).with(controller_class, :theme_resolver, { only: [:show] })
 
     controller_class.theme :theme_resolver, only: [:show]
   end

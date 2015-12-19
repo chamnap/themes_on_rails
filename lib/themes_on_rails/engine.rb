@@ -27,7 +27,7 @@ module ThemesOnRails
           elsif path =~ /^[^\/]+\/all(_.+)?\.(js|css)$/
             # 1. don't allow nested: theme_a/responsive/all.js
             # 2. allow start_with all_
-            # 3. alllow all.js and all.css
+            # 3. allow all.js and all.css
             true
           else
             false
