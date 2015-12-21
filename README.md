@@ -101,7 +101,7 @@ You can even use an inline method, such as a **Proc**, to determine the theme. F
 
 ```ruby
 class HomeController < ApplicationController
-  theme Proc.new { |controller| params[:theme].presence || 'professional' }
+  theme Proc.new { |controller| controller.params[:theme].presence || 'professional' }
 end
 ```
 
