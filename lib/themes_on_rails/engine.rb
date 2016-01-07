@@ -24,9 +24,9 @@ module ThemesOnRails
           basename = path.split('/').last
           if !%w(.js .css).include?(File.extname(path))
             true
-          elsif path =~ /^[^\/]+\/all(_.+)?\.(js|css)$/
+          elsif path =~ /^[^\/]+\/all((_|-).+)?\.(js|css)$/
             # 1. don't allow nested: theme_a/responsive/all.js
-            # 2. allow start_with all_
+            # 2. allow start_with all_ or all-
             # 3. allow all.js and all.css
             true
           else

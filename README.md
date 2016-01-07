@@ -115,16 +115,6 @@ end
 
 With this declaration, the **basic** theme would be used for everything but the `rss` index methods.
 
-## Asset Pipeline
-
-If you are using version `0.1.0`, add this to your staging.rb or production.rb:
-
-```ruby
-config.assets.precompile += [ Proc.new { |path, fn| fn =~ /app\/themes/ && !%w(.js .css).include?(File.extname(path)) } ]
-config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.js" }
-config.assets.precompile += Dir["app/themes/*"].map { |path| "#{path.split('/').last}/all.css" }
-```
-
 ## Authors
 
 * [Chamnap Chhorn](https://github.com/chamnap)
