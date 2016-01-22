@@ -64,4 +64,17 @@ describe PostsController do
       expect(response).to render_template("layouts/application")
     end
   end
+
+  context 'current theme' do
+    it 'get current theme' do
+      get :index, theme: "theme_a"
+      expect(controller.current_theme).to eq "theme_a"
+    end
+
+    it 'renders with helper method' do
+      get :get_theme, theme: "theme_a"
+      expect(response.body).to eq "theme_a"
+    end
+  end
+
 end
