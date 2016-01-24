@@ -17,8 +17,13 @@ module ThemesOnRails
             @theme_instance ||= ThemesOnRails::ActionController.new(self, theme)
           end
 
+          define_method :current_theme do
+            theme_instance.theme_name
+          end
+
           private :layout_from_theme, :theme_instance
           layout  :layout_from_theme, options
+          helper_method :current_theme
         end
 
         controller_class.send(filter_method, options) do |controller|

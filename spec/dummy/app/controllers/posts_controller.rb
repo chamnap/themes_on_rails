@@ -51,6 +51,10 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def get_theme
+    render inline: "<%= current_theme %>"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
