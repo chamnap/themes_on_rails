@@ -44,6 +44,8 @@ module ThemesOnRails
             options.delete(:prepend) ? :prepend_before_filter : :before_filter
           when 4
             options.delete(:prepend) ? :prepend_before_action : :before_action
+          when 5
+            options.delete(:prepend) ? :prepend_before_action : :before_action
           end
         end
     end
