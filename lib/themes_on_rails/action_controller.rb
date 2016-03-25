@@ -42,7 +42,7 @@ module ThemesOnRails
           case Rails::VERSION::MAJOR
           when 3
             options.delete(:prepend) ? :prepend_before_filter : :before_filter
-          when 4
+          when 4, 5
             options.delete(:prepend) ? :prepend_before_action : :before_action
           end
         end
