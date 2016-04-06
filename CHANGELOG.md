@@ -1,5 +1,13 @@
 # Overview
 
+## 0.4.0
+
+* Support Rails 5 by (victorperez)[https://github.com/victorperez]
+
+## 0.3.1
+
+* Make it thread-safe by [lowjoel](https://github.com/lowjoel)
+
 ## 0.3.0
 
 * Support liquid templates.
