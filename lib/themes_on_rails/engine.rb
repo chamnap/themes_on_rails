@@ -8,6 +8,12 @@ module ThemesOnRails
       end
     end
 
+    initializer 'themes_on_rails.action_view' do
+      ActiveSupport.on_load :action_view do
+        ActionView::OptimizedFileSystemResolver.include(ThemesOnRails::FileSystemResolverCache)
+      end
+    end
+
     initializer 'themes_on_rails.load_locales' do |app|
       app.config.i18n.load_path += Dir[Rails.root.join('app/themes/*', 'locales', '**', '*.yml').to_s]
     end
