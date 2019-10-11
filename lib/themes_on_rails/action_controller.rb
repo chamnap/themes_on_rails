@@ -58,6 +58,7 @@ module ThemesOnRails
     end
 
     def prefix_path
+      theme_path = Rails.application.config.rails_on_themes_locations[theme_name] || Rails.root
       "#{Rails.root}/app/themes"
     end
 
