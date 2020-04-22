@@ -9,12 +9,16 @@ module ThemesOnRails
     end
 
     initializer 'themes_on_rails.load_locales' do |app|
-      app.config.i18n.load_path += Dir[Rails.root.join('app/themes/*', 'locales', '**', '*.yml').to_s]
+      get_themes_locations.uniq.each do |theme_path|
+        app.config.i18n.load_path += Dir["#{theme_path}/app/themes/*/locales/**/*.yml"]
+      end
     end
 
     initializer 'themes_on_rails.assets_path' do |app|
-      Dir.glob("#{Rails.root}/app/themes/*/assets/*").each do |dir|
-        app.config.assets.paths << dir
+      get_themes_locations.uniq.each do |theme_path|
+        Dir.glob("#{Rails.root}/app/themes/*/assets/*").each do |dir|
+          app.config.assets.paths << dir
+        end
       end
     end
 
@@ -34,6 +38,12 @@ module ThemesOnRails
           end
         end
       end
+    end
+
+    private
+
+    def get_themes_locations
+      ((Rails.application.config.rails_on_themes_locations.try(:values).try(:uniq) || []) << Rails.root)
     end
   end
 end
