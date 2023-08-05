@@ -19,19 +19,17 @@ module ThemesOnRails
     end
 
     initializer 'themes_on_rails.precompile' do |app|
-      app.config.assets.precompile << Proc.new do |path, fn|
-        if fn =~ /app\/themes/
-          basename = path.split('/').last
-          if !%w(.js .css).include?(File.extname(path))
-            true
-          elsif path =~ /^[^\/]+\/all((_|-).+)?\.(js|css)$/
-            # 1. don't allow nested: theme_a/responsive/all.js
-            # 2. allow start_with all_ or all-
-            # 3. allow all.js and all.css
-            true
-          else
-            false
-          end
+      themes_root          = Pathname.new("#{Rails.root}/app/themes")
+      allowed_assets_regex = /^[^\/]+\/assets\/(stylesheets|javascripts)\/[^\/]+\/all((_|-).+)?\.(js|css)$/
+
+      Dir.glob(themes_root.join("*/assets/**/*").to_s).each do |entry|
+        next unless File.file?(entry)
+        # 1. don't allow nested: theme_a/responsive/all.js
+        # 2. allow start_with all_ or all-
+        # 3. allow all.js and all.css
+        relative_entry = Pathname.new(entry).relative_path_from(themes_root).to_s
+        if !%w(.js .css).include?(File.extname(entry)) || relative_entry =~ allowed_assets_regex
+          app.config.assets.precompile << entry
         end
       end
     end
